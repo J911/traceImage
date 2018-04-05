@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trace Image</title>
+</head>
+<body>
+    <input id="traceImg" type="file" onchange="getGeolocation(this)">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+    <script>
+        function getGeolocation(input) {
+            EXIF.getData(input.files[0], function() {
+                var data = {};
+                data.Latitude = EXIF.getTag(this, "GPSLatitude");
+                data.Longitude = EXIF.getTag(this, "GPSLongitude");
+                console.log(data);
+            });
+        };
+      
+    </script>
+</body>
+</html>
