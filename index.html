@@ -7,15 +7,18 @@
 </head>
 <body>
     <input id="traceImg" type="file" onchange="getGeolocation(this)">
+    <iframe width="360" height="270" frameborder="0" style="border:0"></iframe>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
     <script>
         function getGeolocation(input) {
             EXIF.getData(input.files[0], function() {
                 var data = {};
-                data.Latitude = toDecimal(EXIF.getTag(this, "GPSLatitude"));
-                data.Longitude = toDecimal(EXIF.getTag(this, "GPSLongitude"));
-                console.log(data);
-
+                var Latitude = toDecimal(EXIF.getTag(this, "GPSLatitude"));
+                var Longitude = toDecimal(EXIF.getTag(this, "GPSLongitude"));
+                var mapURL = `http://maps.google.com/maps?q=${Latitude}, ${Longitude}&z=15&output=embed`;
+                $('iframe').attr('src',mapURL);
             });
         };
         var toDecimal = function (number) {
