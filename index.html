@@ -4,10 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trace Image</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/master.css">
 </head>
 <body>
-    <input id="traceImg" type="file" onchange="getGeolocation(this)">
-    <iframe width="360" height="270" frameborder="0" style="border:0"></iframe>
+    <header>
+        <h1>
+            <i class="fa fa-map-marker"></i>
+            Trace Image
+        </h1>
+    </header>
+    <article>
+        <label for="trace-image" class="input-label"><i class="fa fa-image"></i>Select Image</label>
+        <input id="trace-image" type="file" onchange="getGeolocation(this)">
+        <iframe src="https://maps.google.com/maps?z=15&output=embed" width="90%" height="400px" frameborder="0" style="border:0"></iframe>
+    </article>
+    
+    <footer>
+        <a href="https://github.com/J911">
+            <i class="fa fa-github"></i> J911
+        </a>
+    </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
